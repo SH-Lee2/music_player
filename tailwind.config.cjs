@@ -13,6 +13,7 @@ module.exports = {
         slideright: 'slideright 1s ease-in-out',
         wave: 'wave 1.2s linear infinite',
         slowfade: 'slowfade 2.2s ease-in-out',
+        spin: 'spin 3s linear',
       },
       keyframes: {
         slowfade: {
@@ -39,6 +40,9 @@ module.exports = {
           '0%': { transform: 'scale(0)' },
           '50%': { transform: 'scale(1)' },
           '100%': { transform: 'scale(0)' },
+        },
+        spin: {
+          '100%': { transform: 'rotate(360deg)' },
         },
       },
     },
