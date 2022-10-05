@@ -14,3 +14,5 @@ export const genres = [
   { title: 'House', value: 'HOUSE' },
   { title: 'K-Pop', value: 'K_POP' },
 ];
+
+export const VOLUME = 'VOLUME';
