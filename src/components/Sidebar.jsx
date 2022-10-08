@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import { RiCloseLine } from 'react-icons/ri';
 import {
@@ -55,7 +55,9 @@ const Sidebar = () => {
   return (
     <>
       <div className="hidden w-[240px] py-10 px-4 bg-[#191624] md:flex flex-col">
-        <img src={logo} alt="logo" className="w-full h-14 object-contain" />
+        <Link to="/">
+          <img src={logo} alt="logo" className="w-full h-14 object-contain" />
+        </Link>
         <NavLinks />
       </div>
 
