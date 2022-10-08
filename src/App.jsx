@@ -9,6 +9,7 @@ import Search from './pages/Search';
 import { useSelector } from 'react-redux';
 import MusicPlayer from './components/MusicPlayer';
 import Sidebar from './components/Sidebar';
+import TopPlay from './components/TopPlay';
 
 function App() {
   const { activeSong } = useSelector(state => state.player);
@@ -28,6 +29,9 @@ function App() {
               <Route path="/songs/:songid" element={<SongDetails />} />
               <Route path="/search/:searchTerm" element={<Search />} />
             </Routes>
+          </div>
+          <div className="xl:sticky relative top-0 h-fit">
+            <TopPlay />
           </div>
         </div>
       </div>
