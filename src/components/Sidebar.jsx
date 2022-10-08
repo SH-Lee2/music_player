@@ -76,7 +76,7 @@ const Sidebar = () => {
       <div
         ref={sidebarRef}
         className={`absolute top-0 ${sidebarOpen ? 'left-0' : '-left-full'} 
-        h-screen w-2/3 bg-gradient-to-tl from-white/10 to-[#483D8B] backdrop-blur-lg z-10 p-6 md:hidden smooth-transition `}
+        h-screen w-2/3 bg-gradient-to-tl from-white/10 to-[#483D8B] backdrop-blur-lg z-20 p-6 md:hidden smooth-transition `}
       >
         <img src={logo} alt="logo" className="w-full h-14 object-contain" />
         <NavLinks handleClick={() => setSidebarOpen(false)} />
