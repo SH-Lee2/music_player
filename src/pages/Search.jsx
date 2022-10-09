@@ -25,7 +25,7 @@ const Search = () => {
       </h2>
 
       <div className="flex flex-wrap sm:justify-start justify-center gap-8">
-        {songs.map((song, i) => (
+        {songs?.map((song, i) => (
           <SongCard
             key={song.key}
             song={song}
@@ -35,6 +35,7 @@ const Search = () => {
             i={i}
           />
         ))}
+        {!songs && <p className="text-gray-400 font-bold text-lg">검색 결과 없음</p>}
       </div>
     </div>
   );
