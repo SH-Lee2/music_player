@@ -15,6 +15,9 @@ export const shazamCoreApi = createApi({
     getSongsByGenre: builder.query({ query: genre => `/charts/genre-world?genre_code=${genre}` }),
     getSongDetails: builder.query({ query: ({ songid }) => `/tracks/details?track_id=${songid}` }),
     getSongRelated: builder.query({ query: ({ songid }) => `/tracks/related?track_id=${songid}` }),
+    getSongsBySearch: builder.query({
+      query: searchTerm => `/search/multi?search_type=SONGS_ARTISTS&query=${searchTerm}`,
+    }),
   }),
 });
 
@@ -23,4 +26,5 @@ export const {
   useGetSongsByGenreQuery,
   useGetSongDetailsQuery,
   useGetSongRelatedQuery,
+  useGetSongsBySearchQuery,
 } = shazamCoreApi;
