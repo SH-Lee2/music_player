@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Discover from './pages/Discover';
 import TopArtists from './pages/TopArtists';
 import TopCharts from './pages/TopCharts';
@@ -32,6 +32,7 @@ function App() {
               <Route path="/artists/:id" element={<ArtistDetails />} />
               <Route path="/songs/:songid" element={<SongDetails />} />
               <Route path="/search/:searchTerm" element={<Search />} />
+              <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
           </div>
           <div className="xl:sticky relative top-0 h-fit">
