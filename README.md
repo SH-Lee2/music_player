@@ -18,7 +18,7 @@
 ### 2. Around You
 사용자 국가의 노래 차트가 보여지는 페이지입니다
 IP Geolocation API를 사용하여 country code를 받아 나라별 노래 차트 api를 호출 합니다.
-<img src="https://user-images.githubusercontent.com/59095793/196358921-371284bb-0f69-4c80-a6ae-3662e9a1a3d6.png" height="350" width="750"/>
+<img src="https://user-images.githubusercontent.com/59095793/196543766-9708b868-b650-4307-ab13-d79eafe94456.png" height="350" width="750"/>
 
 ### 3.Top Artists
 인기 순서대로 가수의 프로필을 보여주는 페이지입니다.
@@ -26,7 +26,7 @@ IP Geolocation API를 사용하여 country code를 받아 나라별 노래 차�
 
 ### 4.Top Charts
 인기 순서대로 노래 차트를 보여주는 페이지입니다.
-<img src="https://user-images.githubusercontent.com/59095793/196358933-fe1628d6-f768-4cfe-8b95-5415b880d6c2.png" height="350" width="750"/>
+<img src="https://user-images.githubusercontent.com/59095793/196543785-ce049276-0d04-4400-9b47-019433100e5a.png" height="350" width="750"/>
 
 ### 5.Music Player
 선택된 노래가 있다면 페이지 하단에 뮤직 플레이어가 생성되고 노래가 재생됩니다.
