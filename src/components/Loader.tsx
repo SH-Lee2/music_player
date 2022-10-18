@@ -1,7 +1,7 @@
 import React from 'react';
 import { loader } from '../assets';
 
-const Loader = ({ title }) => {
+const Loader = ({ title }: { title: string }) => {
   return (
     <div className="w-full flex justify-center items-center flex-col">
       <img src={loader} alt="loader" className="w-32 h-32 object-contain" />

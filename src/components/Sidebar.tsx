@@ -19,7 +19,7 @@ const links = [
   { name: 'Top Charts', to: '/top-charts', icon: HiOutlineHashtag },
 ];
 
-const NavLinks = ({ handleClick }) => {
+const NavLinks = ({ handleClick }: { handleClick?: () => void }) => {
   return (
     <div className="mt-10">
       {links.map(item => (
@@ -40,11 +40,11 @@ const NavLinks = ({ handleClick }) => {
 const Sidebar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const sidebarRef = useRef(null);
+  const sidebarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleClickOutside = event => {
-      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
         setSidebarOpen(false);
       }
     };

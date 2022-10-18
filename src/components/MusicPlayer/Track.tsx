@@ -1,6 +1,13 @@
 import React from 'react';
+import { Song } from '../../interface/song.interface';
 
-const Track = ({ isPlaying, isActive, activeSong }) => (
+interface Props {
+  isPlaying: boolean;
+  isActive: boolean;
+  activeSong: Song;
+}
+
+const Track = ({ isPlaying, isActive, activeSong }: Props) => (
   <div className="flex-1 flex items-center justify-start">
     <div
       className={`hidden ${isPlaying && isActive ? 'animate-spin' : ''} h-16 w-16 mr-4 sm:block`}

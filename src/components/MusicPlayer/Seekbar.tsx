@@ -1,8 +1,18 @@
 import React from 'react';
 
-const Seekbar = ({ value, min, max, onInput, setSeekTime, appTime }) => {
+interface Props {
+  value: number;
+  min: string;
+  max: number;
+  onInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  setSeekTime: React.Dispatch<React.SetStateAction<number>>;
+  appTime: number;
+}
+
+const Seekbar = ({ value, min, max, onInput, setSeekTime, appTime }: Props) => {
   // 0:00
-  const getTime = time => `${Math.floor(time / 60)}:${`0${Math.floor(time % 60)}`.slice(-2)}`;
+  const getTime = (time: number): string =>
+    `${Math.floor(time / 60)}:${`0${Math.floor(time % 60)}`.slice(-2)}`;
 
   return (
     <div className="hidden sm:flex flex-row items-center">

@@ -9,21 +9,23 @@ import Loader from '../components/Loader';
 import DetailsHeader from '../components/DetailsHeader';
 import RelatedSongs from '../components/RelatedSongs';
 
+import { RootState } from '../redux/store';
+import { Song } from '../interface/song.interface';
+
 const SongDetails = () => {
   const dispatch = useDispatch();
-  const { songid, id: artistId } = useParams();
-  const { activeSong, isPlaying } = useSelector(state => state.player);
-
+  const { songid } = useParams();
+  const { activeSong, isPlaying } = useSelector((state: RootState) => state.player);
   const {
     data: songData,
     isFetching: isFetchingSongDetails,
     error: errorSongDetails,
-  } = useGetSongDetailsQuery({ songid });
+  } = useGetSongDetailsQuery(songid);
   const {
     data,
     isFetching: isFetchinRelatedSongs,
     error: errorSongRelated,
-  } = useGetSongRelatedQuery({ songid });
+  } = useGetSongRelatedQuery(songid);
 
   if (isFetchingSongDetails && isFetchinRelatedSongs)
     return <Loader title="Searching song details" />;
@@ -34,21 +36,21 @@ const SongDetails = () => {
     dispatch(playPause(false));
   };
 
-  const handlePlayClick = (song, i) => {
+  const handlePlayClick = (song: Song, i: number) => {
     dispatch(setActiveSong({ song, data, i }));
     dispatch(playPause(true));
   };
 
   return (
     <div className="flex flex-col">
-      <DetailsHeader artistId={artistId} songData={songData} />
+      <DetailsHeader artistId={songid} songData={songData} />
 
       <div className="mb-10">
         <h2 className="text-white text-3xl font-bold">가사 :</h2>
 
         <div className="mt-5">
-          {songData?.sections[1].type === 'LYRICS' ? (
-            songData?.sections[1]?.text.map((line, i) => (
+          {songData?.sections[1].type === 'LYRICS' && songData?.sections[1]?.text ? (
+            songData?.sections[1]?.text.map((line: string, i: number) => (
               <p key={`lyrics-${line}-${i}`} className="text-gray-400 text-base my-1">
                 {line}
               </p>
@@ -58,15 +60,16 @@ const SongDetails = () => {
           )}
         </div>
       </div>
-
-      <RelatedSongs
-        data={data}
-        artistId={artistId}
-        isPlaying={isPlaying}
-        activeSong={activeSong}
-        handlePauseClick={handlePauseClick}
-        handlePlayClick={handlePlayClick}
-      />
+      {data && (
+        <RelatedSongs
+          data={data}
+          artistId={songid}
+          isPlaying={isPlaying}
+          activeSong={activeSong}
+          handlePauseClick={handlePauseClick}
+          handlePlayClick={handlePlayClick}
+        />
+      )}
     </div>
   );
 };

@@ -12,24 +12,26 @@ import { FreeMode } from 'swiper';
 
 import 'swiper/css';
 import 'swiper/css/free-mode';
+import { RootState } from '../redux/store';
+import { Song } from '../interface/song.interface';
 
 const TopPlay = () => {
   const { data, isFetching } = useGetTopChartsQuery();
   const dispatch = useDispatch();
-  const { activeSong, isPlaying } = useSelector(state => state.player);
+  const { activeSong, isPlaying } = useSelector((state: RootState) => state.player);
 
-  const divRef = useRef(null);
+  const divRef = useRef<HTMLDivElement>(null);
   const topPlays = data?.slice(0, 5);
 
   useEffect(() => {
-    divRef.current.scrollIntoView({ behavior: 'smooth' });
+    divRef.current && divRef.current.scrollIntoView({ behavior: 'smooth' });
   });
 
   const handlePauseClick = () => {
     dispatch(playPause(false));
   };
 
-  const handlePlayClick = (song, i) => {
+  const handlePlayClick = (song: Song, i: number) => {
     dispatch(setActiveSong({ song, data, i }));
     dispatch(playPause(true));
   };
@@ -83,13 +85,15 @@ const TopPlay = () => {
                   key={artist?.key}
                   className="w-1/4 h-auto shadow-lg rounded-full animate-slideright"
                 >
-                  <Link to={`/artists/${artist?.artists[0].adamid}`}>
-                    <img
-                      src={artist?.images?.background}
-                      alt="profile"
-                      className="rounded-full w-full object-cover"
-                    />
-                  </Link>
+                  {artist.artists && (
+                    <Link to={`/artists/${artist?.artists[0].adamid}`}>
+                      <img
+                        src={artist?.images?.background}
+                        alt="profile"
+                        className="rounded-full w-full object-cover"
+                      />
+                    </Link>
+                  )}
                 </SwiperSlide>
               ))}
             </Swiper>

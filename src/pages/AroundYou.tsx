@@ -8,11 +8,13 @@ import SongCard from '../components/SongCard';
 import Error from '../components/Error';
 
 import { countryCode } from '../assets';
+import { RootState } from '../redux/store';
+import { Country } from '../interface/country.interface';
 
 const CountryTracks = () => {
-  const [country, setCountry] = useState('');
-  const [loading, setLoading] = useState(true);
-  const { activeSong, isPlaying } = useSelector(state => state.player);
+  const [country, setCountry] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
+  const { activeSong, isPlaying } = useSelector((state: RootState) => state.player);
   const { data, isFetching, error } = useGetSongsByCountryQuery(country || 'KR');
 
   useEffect(() => {
@@ -27,7 +29,7 @@ const CountryTracks = () => {
 
   if (error && country !== '') return <Error />;
 
-  const transCountry = countryCode.find(({ code }) => code === country)?.value;
+  const transCountry: string | undefined = countryCode.find(({ code }) => code === country)?.value;
 
   return (
     <div className="flex flex-col">
@@ -36,7 +38,7 @@ const CountryTracks = () => {
       </h2>
 
       <div className="flex flex-wrap sm:justify-start justify-center gap-8">
-        {data?.map((song, i) => (
+        {data?.map((song: Country, i: number) => (
           <SongCard
             key={song.key}
             song={song}

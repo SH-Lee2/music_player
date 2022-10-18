@@ -1,8 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Song } from '../interface/song.interface';
 import PlayPause from './PlayPause';
 
-const TopChartCard = ({ song, i, isPlaying, activeSong, handlePauseClick, handlePlayClick }) => {
+interface Props {
+  song: Song;
+  i: number;
+  isPlaying: boolean;
+  activeSong: Song;
+  handlePauseClick: () => void;
+  handlePlayClick: () => void;
+}
+
+const TopChartCard = ({
+  song,
+  i,
+  isPlaying,
+  activeSong,
+  handlePauseClick,
+  handlePlayClick,
+}: Props) => {
   return (
     <div
       className={`w-full flex flex-row items-center hover:bg-[#4c426e] ${
@@ -16,9 +33,11 @@ const TopChartCard = ({ song, i, isPlaying, activeSong, handlePauseClick, handle
           <Link to={`/songs/${song.key}`}>
             <p className="text-xl font-bold text-white">{song?.title}</p>
           </Link>
-          <Link to={`/artists/${song?.artists[0].adamid}`}>
-            <p className="text-base text-gray-300 mt-1">{song?.subtitle}</p>
-          </Link>
+          {song.artists && (
+            <Link to={`/artists/${song?.artists[0].adamid}`}>
+              <p className="text-base text-gray-300 mt-1">{song?.subtitle}</p>
+            </Link>
+          )}
         </div>
       </div>
       <PlayPause

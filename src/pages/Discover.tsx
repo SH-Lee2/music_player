@@ -7,12 +7,14 @@ import Error from '../components/Error';
 import SongCard from '../components/SongCard';
 import { useGetSongsByGenreQuery } from '../redux/services/shazamCore';
 import { selectGenreListId } from '../redux/features/playerSlice';
+import { RootState } from '../redux/store';
+import { Song } from '../interface/song.interface';
 
 const Discover = () => {
   const dispatch = useDispatch();
-  const { activeSong, isPlaying, genreListId } = useSelector(state => state.player);
+  const { activeSong, isPlaying, genreListId } = useSelector((state: RootState) => state.player);
   const { data, isFetching, error } = useGetSongsByGenreQuery(genreListId || 'POP');
-  const genreTitle = genres.find(({ value }) => value === genreListId)?.title;
+  const genreTitle: string | undefined = genres.find(({ value }) => value === genreListId)?.title;
 
   if (isFetching) return <Loader title="Loading songs..." />;
   if (error) return <Error />;
@@ -34,7 +36,7 @@ const Discover = () => {
         </select>
       </div>
       <div className="flex flex-wrap justify-center gap-8 sm:justify-start">
-        {data.map((song, i) => (
+        {data?.map((song: Song, i: number) => (
           <SongCard
             key={song.key}
             isPlaying={isPlaying}

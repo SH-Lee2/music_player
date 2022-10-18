@@ -1,6 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Song } from '../../interface/song.interface';
 
-const initialState = {
+interface PlayerSliceState {
+  currentSongs: Array<Song>;
+  currentIndex: number;
+  isActive: boolean;
+  isPlaying: boolean;
+  activeSong: Song;
+  genreListId: string;
+}
+
+const initialState: PlayerSliceState = {
   currentSongs: [],
   currentIndex: 0,
   isActive: false,
@@ -28,33 +38,25 @@ const playerSlice = createSlice({
       state.isActive = true;
     },
 
-    nextSong: (state, action) => {
-      if (state.currentSongs[action.payload]?.track) {
-        state.activeSong = state.currentSongs[action.payload]?.track;
-      } else {
-        state.activeSong = state.currentSongs[action.payload];
-      }
+    nextSong: (state, action: PayloadAction<number>) => {
+      state.activeSong = state.currentSongs[action.payload];
 
       state.currentIndex = action.payload;
       state.isActive = true;
     },
 
-    prevSong: (state, action) => {
-      if (state.currentSongs[action.payload]?.track) {
-        state.activeSong = state.currentSongs[action.payload]?.track;
-      } else {
-        state.activeSong = state.currentSongs[action.payload];
-      }
+    prevSong: (state, action: PayloadAction<number>) => {
+      state.activeSong = state.currentSongs[action.payload];
 
       state.currentIndex = action.payload;
       state.isActive = true;
     },
 
-    playPause: (state, action) => {
+    playPause: (state, action: PayloadAction<boolean>) => {
       state.isPlaying = action.payload;
     },
 
-    selectGenreListId: (state, action) => {
+    selectGenreListId: (state, action: PayloadAction<string>) => {
       state.genreListId = action.payload;
     },
   },

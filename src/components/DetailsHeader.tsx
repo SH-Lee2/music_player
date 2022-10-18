@@ -1,8 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ArtistDetail } from '../interface/artistDetail.interface';
 
-const DetailsHeader = ({ artistId, artistData, songData }) => {
-  const artist = artistData?.artists[artistId].attributes;
+import { SongDetail } from '../interface/songDetail.interface';
+
+interface Props {
+  artistId: string | undefined;
+  artistData?: ArtistDetail;
+  songData?: SongDetail;
+}
+
+const DetailsHeader = ({ artistId, artistData, songData }: Props) => {
+  const artist = artistId && artistData?.artists[artistId].attributes;
 
   return (
     <div className="relative w-full flex flex-col">

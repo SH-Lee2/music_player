@@ -10,3 +10,5 @@ export const store = configureStore({
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(shazamCoreApi.middleware),
 });
+
+export type RootState = ReturnType<typeof store.getState>

@@ -6,13 +6,15 @@ import Loader from '../components/Loader';
 import SongCard from '../components/SongCard';
 
 import { useGetSongsBySearchQuery } from '../redux/services/shazamCore';
+import { RootState } from '../redux/store';
+import { Song } from '../interface/song.interface';
 
 const Search = () => {
-  const { searchTerm } = useParams();
-  const { activeSong, isPlaying } = useSelector(state => state.player);
+  const { searchTerm } = useParams<string>();
+  const { activeSong, isPlaying } = useSelector((state: RootState) => state.player);
   const { data, isFetching, error } = useGetSongsBySearchQuery(searchTerm);
 
-  const songs = data?.tracks?.hits.map(song => song.track);
+  const songs = data?.tracks?.hits.map((song: { track: any }) => song.track) ?? [];
 
   if (isFetching) return <Loader title={`${searchTerm} 검색중...`} />;
 
@@ -25,16 +27,17 @@ const Search = () => {
       </h2>
 
       <div className="flex flex-wrap sm:justify-start justify-center gap-8">
-        {songs?.map((song, i) => (
-          <SongCard
-            key={song.key}
-            song={song}
-            isPlaying={isPlaying}
-            activeSong={activeSong}
-            data={data}
-            i={i}
-          />
-        ))}
+        {data &&
+          songs?.map((song: Song, i: number) => (
+            <SongCard
+              key={song.key}
+              song={song}
+              isPlaying={isPlaying}
+              activeSong={activeSong}
+              data={data}
+              i={i}
+            />
+          ))}
         {!songs && <p className="text-gray-400 font-bold text-lg">검색 결과 없음</p>}
       </div>
     </div>

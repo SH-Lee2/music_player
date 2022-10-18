@@ -1,11 +1,24 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Country } from '../interface/country.interface';
+import { Search } from '../interface/search.interface';
+import { Song } from '../interface/song.interface';
 
 import { playPause, setActiveSong } from '../redux/features/playerSlice';
 import PlayPause from './PlayPause';
 
-const SongCard = ({ song, data, i, isPlaying, activeSong }) => {
+type SongType = Song | Country | Search | any;
+
+interface Props {
+  song: SongType;
+  data: SongType;
+  i: number;
+  isPlaying: boolean;
+  activeSong: Song;
+}
+
+const SongCard = ({ song, data, i, isPlaying, activeSong }: Props) => {
   const dispatch = useDispatch();
 
   const handlePauseClick = () => {
