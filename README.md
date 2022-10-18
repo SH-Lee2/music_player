@@ -6,8 +6,8 @@
 ## 🚀 intro: 서비스 소개
 장르별 노래, 사용자 나라의 노래 차트, 가수와 노래의 인기순 노래를 들을수 있는 사이트 입니다.
 
-#### 📷 Demo
-
+## 📷 Demo
+<img src="https://user-images.githubusercontent.com/59095793/196536230-155dd6da-20fb-40c0-a145-9aeb4f09496e.gif" height="500" width="750"/>
 
 
 ## 💻 Preview : 주요 화면
@@ -39,6 +39,6 @@ IP Geolocation API를 사용하여 country code를 받아 나라별 노래 차�
 
 ## ⛏️ Skill Set: 기술 스택
 - language : TypeScript
-- libarary :  React, Redux, Redux Toolkit, RTQ qurey TailwindCSS, Shazam Core API, IP Geolocation API
+- libarary :  React, Redux, Redux Toolkit, RTQ qurey TailwindCSS, Shazam Core API, IP Geolocation API, Swiper
 - deploy : Netlify
     
