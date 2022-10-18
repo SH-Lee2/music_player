@@ -14,7 +14,7 @@ import { Song } from '../interface/song.interface';
 
 const SongDetails = () => {
   const dispatch = useDispatch();
-  const { songid } = useParams();
+  const { songid, id: artistId } = useParams();
   const { activeSong, isPlaying } = useSelector((state: RootState) => state.player);
   const {
     data: songData,
@@ -43,7 +43,7 @@ const SongDetails = () => {
 
   return (
     <div className="flex flex-col">
-      <DetailsHeader artistId={songid} songData={songData} />
+      <DetailsHeader artistId={artistId} songData={songData} />
 
       <div className="mb-10">
         <h2 className="text-white text-3xl font-bold">가사 :</h2>
@@ -63,7 +63,7 @@ const SongDetails = () => {
       {data && (
         <RelatedSongs
           data={data}
-          artistId={songid}
+          artistId={artistId}
           isPlaying={isPlaying}
           activeSong={activeSong}
           handlePauseClick={handlePauseClick}
