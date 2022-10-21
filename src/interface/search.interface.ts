@@ -124,26 +124,16 @@ export interface Provider {
   type: ProviderType;
 }
 
-export enum ProviderCaption {
-  OpenInDeezer = 'Open in Deezer',
-  OpenInSpotify = 'Open in Spotify',
-  OpenInYouTubeMusic = 'Open in YouTube Music',
-}
+export type ProviderCaption = 'Open in Deezer' | 'Open in Spotify' | 'Open in YouTube Music';
 
 export interface ProviderImages {
   default: string;
   overflow: string;
 }
 
-export enum ProviderType {
-  Deezer = 'DEEZER',
-  Spotify = 'SPOTIFY',
-  Youtubemusic = 'YOUTUBEMUSIC',
-}
+export type ProviderType = 'DEEZER' | 'SPOTIFY' | 'YOUTUBEMUSIC';
 
-export enum HubType {
-  Applemusic = 'APPLEMUSIC',
-}
+export type HubType = 'APPLEMUSIC';
 
 export interface TrackImages {
   background: string;
@@ -163,6 +153,4 @@ export interface Share {
   twitter: string;
 }
 
-export enum TrackType {
-  Music = 'MUSIC',
-}
+export type TrackType = 'MUSIC';

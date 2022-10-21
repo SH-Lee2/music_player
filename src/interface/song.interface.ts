@@ -38,20 +38,11 @@ export interface Action {
   uri?: string;
 }
 
-export enum Name {
-  Apple = 'apple',
-  HubApplemusicDeeplink = 'hub:applemusic:deeplink',
-}
+export type Name = 'apple' | 'hub:applemusic:deeplink';
 
-export enum ActionType {
-  Applemusicopen = 'applemusicopen',
-  Applemusicplay = 'applemusicplay',
-  URI = 'uri',
-}
+export type ActionType = 'applemusicopen' | 'applemusicplay' | 'uri';
 
-export enum Displayname {
-  AppleMusic = 'APPLE MUSIC',
-}
+export type Displayname = 'APPLE MUSIC';
 
 export interface Option {
   actions: Action[];
@@ -70,25 +61,15 @@ export interface Beacondata {
   type: BeacondataType;
 }
 
-export enum Providername {
-  Applemusic = 'applemusic',
-}
+export type Providername = 'applemusic';
 
-export enum BeacondataType {
-  Open = 'open',
-}
+export type BeacondataType = 'open';
 
-export enum Caption {
-  Open = 'OPEN',
-}
+export type Caption = 'OPEN';
 
-export enum Listcaption {
-  OpenInAppleMusic = 'Open in Apple Music',
-}
+export type Listcaption = 'Open in Apple Music';
 
-export enum HubType {
-  Applemusic = 'APPLEMUSIC',
-}
+export type HubType = 'APPLEMUSIC';
 
 export interface Images {
   background: string;
@@ -108,6 +89,4 @@ export interface Share {
   twitter: string;
 }
 
-export enum RootObjectType {
-  Music = 'MUSIC',
-}
+export type RootObjectType = 'MUSIC';

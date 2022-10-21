@@ -61,19 +61,11 @@ export interface Artwork {
   url: string;
   width: number;
 }
-export enum AudioTrait {
-  HiResLossless = 'hi-res-lossless',
-  Lossless = 'lossless',
-  LossyStereo = 'lossy-stereo',
-}
 
-export enum GenreName {
-  KPop = 'K-Pop',
-  Music = 'Music',
-  Pop = 'Pop',
-  Soundtrack = 'Soundtrack',
-  TVSoundtrack = 'TV Soundtrack',
-}
+export type AudioTrait = 'hi-res-lossless' | 'lossless' | 'lossy-stereo';
+
+export type GenreName = 'K-Pop' | 'Music' | 'Pop' | 'Soundtrack' | 'TV Soundtrack';
+
 export interface PlayParams {
   id: string;
   kind: string;
@@ -82,10 +74,8 @@ export interface PlayParams {
 export interface Preview {
   url: string;
 }
-export enum Type {
-  Albums = 'albums',
-  Songs = 'songs',
-}
+
+type Type = 'albums' | 'songs';
 export interface Attributes {
   artwork: Artwork;
   genreNames: string[];
